@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<agence nom="Sfax Auto Location" ville="Sfax">
+    <voitures>
+        <voiture id="V1" disponible="true">
+            <marque>Renault</marque>
+            <modele>Clio 5</modele>
+            <annee>1990</annee>
+            <categorie>sport</categorie>
+            <prixJour>-90.0</prixJour>
+            <promotion>peut-etre</promotion>
+        </voiture>
+    </voitures>
+    <clients>
+        <client id="C1" actif="true">
+            <nom>Ben Ali</nom>
+            <prenom>Sami</prenom>
+            <telephone>123</telephone>
+            <email>pas-un-email</email>
+        </client>
+    </clients>
+    <locations>
+        <location id="L1" voitureRef="V99" clientRef="C1">
+            <dateDebut>2025-13-45</dateDebut>
+            <dateFin>2025-10-05</dateFin>
+            <montantTotal>380.0</montantTotal>
+            <statut>perdue</statut>
+        </location>
+    </locations>
+</agence>

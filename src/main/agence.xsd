@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+
+    <xs:simpleType name="categorieType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="economique"/>
+            <xs:enumeration value="compacte"/>
+            <xs:enumeration value="suv"/>
+            <xs:enumeration value="luxe"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="statutType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="reservee"/>
+            <xs:enumeration value="en_cours"/>
+            <xs:enumeration value="terminee"/>
+            <xs:enumeration value="annulee"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="prixType">
+        <xs:restriction base="xs:decimal">
+            <xs:minExclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="anneeType">
+        <xs:restriction base="xs:int">
+            <xs:minInclusive value="2000"/>
+            <xs:maxInclusive value="2030"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="telephoneType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{8}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="emailType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[^@\s]+@[^@\s]+\.[^@\s]+"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- ===== Types complexes ===== -->
+    <xs:complexType name="voitureType">
+        <xs:sequence>
+            <xs:element name="marque" type="xs:string"/>
+            <xs:element name="modele" type="xs:string"/>
+            <xs:element name="annee" type="anneeType"/>
+            <xs:element name="categorie" type="categorieType"/>
+            <xs:element name="prixJour" type="prixType"/>
+            <xs:element name="promotion" type="xs:boolean"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:ID" use="required"/>
+        <xs:attribute name="disponible" type="xs:boolean" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="clientType">
+        <xs:sequence>
+            <xs:element name="nom" type="xs:string"/>
+            <xs:element name="prenom" type="xs:string"/>
+            <xs:element name="telephone" type="telephoneType"/>
+            <xs:element name="email" type="emailType"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:ID" use="required"/>
+        <xs:attribute name="actif" type="xs:boolean" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="locationType">
+        <xs:sequence>
+            <xs:element name="dateDebut" type="xs:date"/>
+            <xs:element name="dateFin" type="xs:date"/>
+            <xs:element name="montantTotal" type="prixType"/>
+            <xs:element name="statut" type="statutType"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:ID" use="required"/>
+        <xs:attribute name="voitureRef" type="xs:IDREF" use="required"/>
+        <xs:attribute name="clientRef" type="xs:IDREF" use="required"/>
+    </xs:complexType>
+
+    <!-- ===== Élément racine ===== -->
+    <xs:element name="agence">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="voitures">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="voiture" type="voitureType" minOccurs="1" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="clients">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="client" type="clientType" minOccurs="1" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="locations">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="location" type="locationType" minOccurs="0" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="nom" type="xs:string" use="required"/>
+            <xs:attribute name="ville" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

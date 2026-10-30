@@ -1,0 +1,70 @@
+<agence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="agence.xsd" nom="Sfax Auto Location" ville="Sfax">
+    <voitures>
+        <voiture id="V1" disponible="true">
+            <marque>Renault</marque>
+            <modele>Clio 5</modele>
+            <annee>2022</annee>
+            <categorie>economique</categorie>
+            <prixJour>90.0</prixJour>
+            <promotion>false</promotion>
+        </voiture>
+        <voiture id="V2" disponible="false">
+            <marque>Peugeot</marque>
+            <modele>208</modele>
+            <annee>2023</annee>
+            <categorie>economique</categorie>
+            <prixJour>95.0</prixJour>
+            <promotion>true</promotion>
+        </voiture>
+        <voiture id="V3" disponible="true">
+            <marque>Volkswagen</marque>
+            <modele>Golf 8</modele>
+            <annee>2024</annee>
+            <categorie>compacte</categorie>
+            <prixJour>130.0</prixJour>
+            <promotion>true</promotion>
+        </voiture>
+        <voiture id="V4" disponible="true">
+            <marque>Mercedes</marque>
+            <modele>Classe C</modele>
+            <annee>2023</annee>
+            <categorie>luxe</categorie>
+            <prixJour>250.0</prixJour>
+            <promotion>false</promotion>
+        </voiture>
+    </voitures>
+    <clients>
+        <client id="C1" actif="true">
+            <nom>Ben Ali</nom>
+            <prenom>Sami</prenom>
+            <telephone>20123456</telephone>
+            <email>sami.benali@gmail.com</email>
+        </client>
+        <client id="C2" actif="true">
+            <nom>Trabelsi</nom>
+            <prenom>Mariem</prenom>
+            <telephone>98765432</telephone>
+            <email>mariem.trabelsi@gmail.com</email>
+        </client>
+        <client id="C3" actif="false">
+            <nom>Gharbi</nom>
+            <prenom>Ahmed</prenom>
+            <telephone>55667788</telephone>
+            <email>ahmed.gharbi@gmail.com</email>
+        </client>
+    </clients>
+    <locations>
+        <location id="L1" voitureRef="V2" clientRef="C1">
+            <dateDebut>2025-10-01</dateDebut>
+            <dateFin>2025-10-05</dateFin>
+            <montantTotal>380.0</montantTotal>
+            <statut>en_cours</statut>
+        </location>
+        <location id="L2" voitureRef="V1" clientRef="C2">
+            <dateDebut>2025-09-10</dateDebut>
+            <dateFin>2025-09-12</dateFin>
+            <montantTotal>180.0</montantTotal>
+            <statut>terminee</statut>
+        </location>
+    </locations>
+</agence>
